@@ -112,16 +112,22 @@ function createItem({ value, index, type }) {
   input.name = type;
   input.value = value;
 
+  const span = document.createElement("span");
+  span.className = "checkmark";
+
   // Create label
   const label = document.createElement("label");
-  label.for = `${type}${index}`;
+  // label.for = `${type}${index}`;
   label.textContent = value;
-  label.className = "item-label";
+  label.className = "checkbox-container";
+
+  label.appendChild(input);
+  label.appendChild(span);
 
   const item = document.createElement("li");
   item.className = "item";
 
-  item.appendChild(input);
+  // item.appendChild(input);
   item.appendChild(label);
 
   return item;
@@ -176,7 +182,7 @@ function createJobs({ country, city, jobTitle, description, sector, id }) {
   detailsContainer.className = "details-container";
 
   const image = document.createElement("img");
-  image.src = "image.jpeg";
+  image.src = "imageIcon.jpeg";
   image.alt = "image";
   image.width = "100";
   image.height = "100";

@@ -19,9 +19,6 @@
 
 .item {
   display: block;
-  border: none;
-  padding: 5px;
-  margin-bottom: 5px;
 }
 
 .item-label {
@@ -51,6 +48,7 @@
   background-color: white;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 12px;
 }
 
 .details-container {
@@ -160,6 +158,7 @@ select {
   align-items: center;
   justify-content: center;
   font-size: large;
+  text-transform: capitalize;
 }
 
 .btn {
@@ -296,27 +295,6 @@ input[type="text"] {
   margin: var(--small-margin) var(--mid-margin);
 }
 
-.submit-button {
-  padding: 10px 50px;
-  background-color: var(--gray-100);
-  border: var(--small-border) solid black;
-  border-radius: var(--main-border-radius);
-  cursor: pointer;
-}
-
-.submit-button:hover {
-  background-color: var(--gray-200);
-}
-
-.submit-button:active {
-  background-color: var(--gray-300);
-}
-
-hr {
-  background-color: black;
-  height: 2px;
-}
-
 .search-box {
   position: relative;
   margin: var(--mid-margin) auto;
@@ -340,51 +318,70 @@ input[type="search"]:focus ~ label {
   display: none;
 }
 
-ul {
-  list-style-type: none;
-}
-
-ul li {
-  padding: 1rem;
-  border: var(--small-border) solid black;
-  margin-bottom: var(--mid-margin);
-  display: grid;
-  grid-template-columns: 95% 5%;
-  row-gap: var(--mid-margin);
-}
-
-ul li p:focus {
-  outline: none;
-  padding-bottom: 5px;
-  border-bottom: var(--small-border) solid black;
-}
-ul li label {
-  justify-self: end;
-}
-ul li i {
-  font-size: var(--icon-font-size);
+/* The container */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
   cursor: pointer;
-  justify-self: end;
-  transition: transform 100ms;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-ul li i:hover {
-  transform: scale(1.1);
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
-.fa-check-circle {
-  color: --var(--gray-350);
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
 }
 
-.completed p {
-  text-decoration: line-through;
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
 }
 
-.completed .fa-check-circle {
-  color: #008000;
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #2196f3;
 }
 
-.numbers {
-  display: flex;
-  justify-content: space-around;
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 3px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
