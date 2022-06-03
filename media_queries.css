@@ -1,0 +1,38 @@
+/* Desktop Small */
+@media (max-width: 992px) {
+  section {
+    width: 75%;
+  }
+}
+
+/* Medium Device - Tablet */
+@media (max-width: 768px) {
+  section {
+    width: 90%;
+  }
+}
+
+/* Small Device - Mobile */
+@media (max-width: 576px) {
+  section {
+    width: 100%;
+  }
+  .submit-button {
+    display: block;
+    margin-left: 95px;
+  }
+}
+
+/* Extra Small Devices - Small Mobile Phones */
+@media (max-width: 375px) {
+  form label {
+    text-align: left;
+  }
+  form input[type="text"] {
+    display: block;
+    margin-left: 0;
+  }
+  .submit-button {
+    margin-left: 0;
+  }
+}

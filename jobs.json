@@ -1,0 +1,60 @@
+{
+  "jobs": [
+    {
+      "id": "2",
+      "country": "Palestine",
+      "city": "Jenin",
+      "sector": "Sales",
+      "jobTitle": "it manager",
+      "description": "This is a job offer for Sales manager ...."
+    },
+    {
+      "id": "3",
+      "country": "Jordan",
+      "city": "Amman",
+      "sector": "Sales",
+      "jobTitle": "developer manager",
+      "description": "This is a job offer for Sales manager ...."
+    },
+    {
+      "id": "4",
+      "country": "Lebanon",
+      "city": "Beirut",
+      "sector": "Sales",
+      "jobTitle": "frontend manager",
+      "description": "This is a job offer for Sales manager ...."
+    },
+    {
+      "id": "5",
+      "country": "Saudi Arabia",
+      "city": "Jada",
+      "sector": "Sales",
+      "jobTitle": "Sales manager",
+      "description": "This is a job offer for Sales manager ...."
+    },
+    {
+      "country": "Palestine",
+      "city": "Nablus",
+      "sector": "Administration",
+      "jobTitle": "HR ",
+      "description": "any thinjjj",
+      "id": "Ts3_UTO"
+    },
+    {
+      "country": "Palestine",
+      "city": "Nablus",
+      "sector": "Computer Software",
+      "jobTitle": "backend developer",
+      "description": "test",
+      "id": "reHgeG_"
+    },
+    {
+      "country": "Lebanon",
+      "city": "Beirut",
+      "sector": "Airlines",
+      "jobTitle": "nn",
+      "description": "ccc",
+      "id": "8j12ykO"
+    }
+  ]
+}

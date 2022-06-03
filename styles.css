@@ -1,0 +1,390 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+}
+
+.left {
+  width: 25%;
+  border: 1px solid #808080;
+  overflow: auto;
+  padding: 15px;
+}
+
+.right {
+  background-color: #eee;
+  width: 75%;
+}
+
+.item {
+  display: block;
+  border: none;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.item-label {
+  padding-left: 5px;
+}
+
+.topBar {
+  display: flex;
+  padding: 8px;
+}
+.search {
+  width: 90%;
+  border: 1px solid hsl(0deg 0% 60%) !important;
+  margin-right: 10px;
+}
+.add-button {
+  min-width: 15%;
+  background-color: hsl(207deg 90% 60%);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0 5px;
+  min-height: 35px;
+}
+.job-container {
+  border: 1px solid hsl(207deg 86% 27%);
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-container {
+  display: flex;
+}
+
+.details {
+  padding: 12px;
+}
+
+.job-title {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.job-country {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.job-sector {
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.job-description {
+  line-height: 20px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #999999;
+}
+
+.image {
+  padding: 5px;
+}
+
+.jobs-container {
+  padding: 15px;
+}
+
+.action-button {
+  margin-top: 10px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.view-button {
+  margin-right: 5px;
+}
+
+#backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  /* Meant To Be Flex By JS */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal {
+  width: 50rem;
+  background-color: white;
+  text-align: center;
+  border: 1px solid hsl(207deg 90% 60%);
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(./arrow3.png);
+  background-repeat: no-repeat;
+  background-size: 35px 20px;
+  background-position: right;
+}
+
+.input-text {
+  border: 1px solid hsl(207deg 90% 60%) !important;
+  border-radius: 0 !important;
+  width: 22rem;
+  margin: 10px 2px !important;
+  color: #808080;
+  height: 35px;
+  padding: 8px;
+}
+
+.textArea {
+  border: 1px solid hsl(207deg 90% 60%) !important;
+  border-radius: 0 !important;
+  width: 44.5rem;
+  margin: 10px 2px !important;
+  padding: 8px;
+}
+
+#modal p {
+  background-color: #e6e6e6;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}
+
+.btn {
+  margin: var(--large-margin) auto auto;
+  padding: 10px 20px;
+  border-radius: var(--main-border-radius);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: lightgray;
+  color: white;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.cancel:hover {
+  background-color: var(--gray-100);
+}
+
+.delete {
+  background-color: var(--blue-light);
+  color: white;
+}
+
+.delete:hover {
+  background-color: var(--blue-dark);
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+:root {
+  --large-margin: 2rem;
+  --mid-margin: 1rem;
+  --small-margin: 0.5rem;
+
+  --font-family: sans-serif;
+  --main-font-size: 1rem;
+  --icon-font-size: 1.25rem;
+  --small-border: 1px;
+  --large-border: 0.5rem;
+
+  --main-border-radius: 5px;
+  --large-border-radius: 10px;
+
+  --gray-100: hsl(0, 0%, 90%);
+  --gray-200: hsl(0, 0%, 80%);
+  --gray-300: hsl(0, 0%, 60%);
+  --gray-350: hsl(0, 0%, 50%);
+  --gray-400: hsl(0, 0%, 40%);
+  --gray-500: hsl(0, 0%, 20%);
+
+  --blue-light: hsl(207, 90%, 60%);
+  --blue-dark: hsl(207, 90%, 40%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: var(--small-border) solid black;
+  border-radius: var(--main-border-radius);
+  margin: var(--small-margin) var(--mid-margin);
+}
+
+.submit-button {
+  padding: 10px 50px;
+  background-color: var(--gray-100);
+  border: var(--small-border) solid black;
+  border-radius: var(--main-border-radius);
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: var(--gray-200);
+}
+
+.submit-button:active {
+  background-color: var(--gray-300);
+}
+
+hr {
+  background-color: black;
+  height: 2px;
+}
+
+.search-box {
+  position: relative;
+  margin: var(--mid-margin) auto;
+}
+.search-box label {
+  position: absolute;
+  bottom: calc(0.5rem + 10px);
+  left: calc(0.5rem + 10px);
+  font-size: var(--main-font-size);
+  color: var(--gray-200);
+}
+input[type="search"] {
+  width: 100%;
+  padding: 10px;
+  border: var(--large-border) solid var(--gray-200);
+  outline: none;
+  font-size: var(--main-font-size);
+}
+
+input[type="search"]:focus ~ label {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  padding: 1rem;
+  border: var(--small-border) solid black;
+  margin-bottom: var(--mid-margin);
+  display: grid;
+  grid-template-columns: 95% 5%;
+  row-gap: var(--mid-margin);
+}
+
+ul li p:focus {
+  outline: none;
+  padding-bottom: 5px;
+  border-bottom: var(--small-border) solid black;
+}
+ul li label {
+  justify-self: end;
+}
+ul li i {
+  font-size: var(--icon-font-size);
+  cursor: pointer;
+  justify-self: end;
+  transition: transform 100ms;
+}
+
+ul li i:hover {
+  transform: scale(1.1);
+}
+
+.fa-check-circle {
+  color: --var(--gray-350);
+}
+
+.completed p {
+  text-decoration: line-through;
+}
+
+.completed .fa-check-circle {
+  color: #008000;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-around;
+}
