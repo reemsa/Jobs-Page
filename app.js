@@ -294,6 +294,14 @@ function fetchJobList(searchValue) {
           });
         });
       jobList.forEach((item) => jobs.appendChild(item));
+      if (jobList?.length === 0) {
+        const message = document.createElement("div");
+        message.textContent = "No Jobs at the moment";
+        message.style.display = "flex";
+        message.style.justifyContent = "center";
+        message.style.margin = "5rem 0";
+        jobs.appendChild(message);
+      }
     });
 }
 
