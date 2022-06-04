@@ -3,6 +3,7 @@
   display: flex;
   gap: 12px;
   padding: 8px;
+  height: 100vh;
 }
 
 h4 {
@@ -10,7 +11,7 @@ h4 {
 }
 
 .left {
-  width: 25%;
+  width: 20%;
   border: 1px solid #808080;
   overflow: auto;
   padding: 15px;
@@ -18,7 +19,8 @@ h4 {
 
 .right {
   background-color: #eee;
-  width: 75%;
+  width: 80%;
+  overflow: auto;
 }
 
 .item {
@@ -202,6 +204,17 @@ select {
 
 .delete:hover {
   background-color: var(--blue-dark);
+}
+
+.pagination {
+  float: right;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
 }
 
 #snackbar {

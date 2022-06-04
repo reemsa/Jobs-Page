@@ -5,6 +5,9 @@ const sectors = ["Sales", "Airlines", "Administration", "Computer Software"];
 
 const jobURL = `http://localhost:3000/jobs`;
 const addButton = document.getElementById("add-button");
+const jobsPerPage = 5;
+
+let jobsArray = [];
 let enabledSettings = [];
 
 const getTypeList = (list, type) => {
@@ -251,6 +254,63 @@ function debounceEvent(callback, time) {
   };
 }
 
+function displayJobs(list) {
+  const sectorFilters = enabledSettings
+    .filter((item) => item?.type === "sector")
+    .map((item) => item?.value);
+  const countryFilters = enabledSettings
+    .filter((item) => item?.type === "country")
+    .map((item) => item?.value);
+  const cityFilters = enabledSettings
+    .filter((item) => item?.type === "city")
+    .map((item) => item?.value);
+  const searchValue = document.getElementById("titleSearch").value;
+  const jobs = document.querySelector("#jobs");
+  while (jobs.firstChild) {
+    jobs.removeChild(jobs.lastChild);
+  }
+
+  let filteredList = [...list];
+
+  if (enabledSettings?.length > 0) {
+    filteredList = list?.filter(
+      (item) =>
+        (sectorFilters?.length > 0
+          ? sectorFilters?.includes(item?.sector)
+          : true) &&
+        (countryFilters?.length > 0
+          ? countryFilters?.includes(item?.country)
+          : true) &&
+        (cityFilters?.length > 0 ? cityFilters?.includes(item?.city) : true)
+    );
+  }
+
+  const jobList = filteredList
+    .filter((item) =>
+      searchValue ? item?.jobTitle.includes(searchValue) : true
+    )
+    .map((item) => {
+      return createJobs({
+        country: item?.country,
+        city: item?.city,
+        jobTitle: item?.jobTitle,
+        description: item?.description,
+        sector: item?.sector,
+        id: item?.id,
+      });
+    });
+
+  jobList.forEach((item) => jobs.appendChild(item));
+  if (jobList?.length === 0) {
+    const message = document.createElement("div");
+    message.textContent = "No Jobs at the moment";
+    message.style.display = "flex";
+    message.style.justifyContent = "center";
+    message.style.margin = "5rem 0";
+    jobs.appendChild(message);
+  }
+}
+
 function fetchJobList(searchValue) {
   const sectorFilters = enabledSettings
     .filter((item) => item?.type === "sector")
@@ -261,6 +321,7 @@ function fetchJobList(searchValue) {
   const cityFilters = enabledSettings
     .filter((item) => item?.type === "city")
     .map((item) => item?.value);
+  const pagination = document.getElementById("pagination");
 
   fetch(`${jobURL}`)
     .then((response) => response.json())
@@ -299,7 +360,10 @@ function fetchJobList(searchValue) {
             id: item?.id,
           });
         });
-      jobList.forEach((item) => jobs.appendChild(item));
+      jobsArray = filteredList.filter((item) =>
+        searchValue ? item?.jobTitle.includes(searchValue) : true
+      );
+      // jobList.forEach((item) => jobs.appendChild(item));
       if (jobList?.length === 0) {
         const message = document.createElement("div");
         message.textContent = "No Jobs at the moment";
@@ -307,6 +371,29 @@ function fetchJobList(searchValue) {
         message.style.justifyContent = "center";
         message.style.margin = "5rem 0";
         jobs.appendChild(message);
+      }
+      if (jobList?.length > jobsPerPage) {
+        const numberOfPages = Math.ceil(jobList?.length / jobsPerPage);
+        const items = [];
+
+        const firstIcon = document.createElement("a");
+        firstIcon.href = `#${1}`;
+        firstIcon.innerHTML = "&laquo";
+        const lastIcon = document.createElement("a");
+        lastIcon.href = `#${numberOfPages}`;
+        lastIcon.innerHTML = "&raquo";
+
+        for (let i = 0; i < numberOfPages; i++) {
+          const item = document.createElement("a");
+          item.href = `#${i + 1}`;
+          item.textContent = i + 1;
+          items.push(item);
+        }
+        pagination.appendChild(firstIcon);
+        items.map((item) => pagination.appendChild(item));
+        pagination.appendChild(lastIcon);
+
+        jobList.slice(0, jobsPerPage).forEach((item) => jobs.appendChild(item));
       }
     });
 }
@@ -393,6 +480,16 @@ function setUp() {
   prepareCategories();
   prepareDropDown();
   fetchJobList();
+  if (window.history) {
+    window.addEventListener("hashchange", function () {
+      const page = document.URL.split("#")?.[1] ?? 1;
+      const jobsToShow = jobsArray?.slice(
+        (page - 1) * jobsPerPage,
+        page * jobsPerPage
+      );
+      displayJobs(jobsToShow);
+    });
+  }
 }
 
 // To Ensure The Script Works Correctly
