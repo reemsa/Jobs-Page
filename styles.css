@@ -46,6 +46,7 @@ h4 {
   border-radius: 4px;
   padding: 0 5px;
   min-height: 35px;
+  font-family: sans-serif;
 }
 .job-container {
   border: 1px solid hsl(207deg 86% 27%);
@@ -68,18 +69,21 @@ h4 {
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+  font-family: sans-serif;
 }
 
 .job-country {
   line-height: 20px;
   font-size: 14px;
   font-weight: 300;
+  font-family: sans-serif;
 }
 
 .job-sector {
   line-height: 20px;
   font-size: 12px;
   font-weight: 500;
+  font-family: sans-serif;
 }
 
 .job-description {
@@ -87,6 +91,7 @@ h4 {
   font-size: 10px;
   font-weight: 500;
   color: #999999;
+  font-family: sans-serif;
 }
 
 .image {
@@ -145,6 +150,7 @@ select {
   color: #808080;
   height: 35px;
   padding: 8px;
+  font-family: sans-serif;
 }
 
 .textArea {
@@ -153,6 +159,7 @@ select {
   width: 44.5rem;
   margin: 10px 2px !important;
   padding: 8px;
+  font-family: sans-serif;
 }
 
 #modal p {
@@ -163,6 +170,7 @@ select {
   justify-content: center;
   font-size: large;
   text-transform: capitalize;
+  font-family: sans-serif;
 }
 
 .btn {
@@ -180,6 +188,7 @@ select {
   color: white;
   font-weight: 500;
   text-transform: capitalize;
+  font-family: sans-serif;
 }
 
 .cancel:hover {
@@ -315,6 +324,7 @@ input[type="search"] {
   border: var(--large-border) solid var(--gray-200);
   outline: none;
   font-size: var(--main-font-size);
+  font-family: sans-serif;
 }
 
 input[type="search"]:focus ~ label {
